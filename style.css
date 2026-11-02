@@ -1,0 +1,274 @@
+:root {
+  --navy: #1c3a6b;
+  --navy-dark: #12284b;
+  --gold: #c9a227;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f8fafc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.brand-logos {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.brand-logos img { height: 64px; width: auto; display: block; }
+
+/* FIT EXPO name design (same font and colors as the event banner) */
+.expo-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: "Michroma", "Segoe UI", sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.brand-logos img,
+.splash-logos img { mix-blend-mode: multiply; }
+.expo-title { font-size: 2rem; color: var(--navy); letter-spacing: 0.02em; }
+.expo-year { font-size: 2rem; color: var(--gold); letter-spacing: 0.02em; }
+
+.footer {
+  background: var(--navy);
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  font-family: "Michroma", "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+/* Splash screen */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.splash.hide { opacity: 0; visibility: hidden; }
+.splash .blob {
+  position: absolute;
+  background: var(--navy);
+  border-radius: 50%;
+}
+.blob-tl { width: 40vmax; height: 40vmax; left: -22vmax; top: -22vmax; }
+.blob-br { width: 30vmax; height: 30vmax; right: -16vmax; bottom: -16vmax; }
+.splash-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5vh;
+  background: var(--navy);
+}
+.splash-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 0 20px;
+  text-align: center;
+  animation: rise 0.9s ease both;
+}
+.splash-logos { display: flex; align-items: center; gap: 36px; }
+.splash-logos img { height: clamp(90px, 16vh, 150px); width: auto; }
+.splash .expo-name { align-items: center; }
+.splash .expo-title,
+.splash .expo-year { font-size: clamp(2rem, 6vw, 4rem); }
+.splash-sub {
+  margin: 0;
+  color: var(--muted);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.loader {
+  width: 160px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--border);
+  overflow: hidden;
+}
+.loader span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  animation: load 2.4s ease-in-out forwards;
+}
+body.splashing { overflow: hidden; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes load {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Floor tabs */
+.tabs-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.tab:hover { background: #eef2ff; }
+.tab .num,
+.tab .count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: #eef0f4;
+  color: var(--muted);
+}
+.tab.active {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(10, 42, 102, 0.35);
+}
+.tab.active .num,
+.tab.active .count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Floor heading */
+.floor-head {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.floor-head h2 { margin: 0; font-size: 1rem; }
+.floor-head p { margin: 2px 0 0; font-size: 0.85rem; color: var(--muted); }
+
+/* Plan + sidebar */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  gap: 24px;
+  padding-top: 28px;
+  padding-bottom: 48px;
+  align-items: start;
+}
+.plan-card,
+.side-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.plan-card { padding: 12px; }
+.plan-card img { display: block; width: 100%; height: auto; }
+
+.side-card { padding: 18px; }
+.side-card h3 { margin: 0; font-size: 1rem; }
+.side-caption { margin: 2px 0 12px; font-size: 0.8rem; color: var(--muted); }
+#zone-list { list-style: none; margin: 0; padding: 0; }
+#zone-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+.dot {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.18);
+}
+.zone-name { flex: 1; font-weight: 500; }
+.zone-count {
+  font-size: 0.78rem;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: #eef2ff;
+  color: var(--navy);
+}
+
+/* Scroll to top */
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+.to-top:hover { background: var(--navy-dark); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .brand-logos { gap: 14px; }
+  .brand-logos img { height: 44px; }
+  .expo-title, .expo-year { font-size: 1.1rem; }
+  .splash-logos { gap: 20px; }
+  .tabs { gap: 6px; }
+  .tab { padding: 8px 10px; font-size: 0.9rem; }
+}
