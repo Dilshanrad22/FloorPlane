@@ -1,12 +1,13 @@
-// Floor data comes from new_floor_planenew.pptx (room names and legends are as in the slides).
+// Floor data comes from assets/new_floor_plan.pptx (room names and legends are as in the slides).
 const floors = [
   {
     name: "1st Floor",
     subtitle: "Department of Information Technology",
     image: "assets/floor1.png",
     zones: [
-      { name: "Level 2 & 4 Projects", color: "#5b9bd5", count: 2 },
-      { name: "Historical Instrument", color: "#70ad47", count: 1 },
+      { name: "Level 2 & 4 Projects", color: "#ffc000", count: 2 },
+      { name: "Historical Instrument", color: "#ff0000", count: 1 },
+      { name: "Photo Booth", color: "#548235", count: 1 },
     ],
   },
   {
@@ -14,8 +15,7 @@ const floors = [
     subtitle: "Department of Computational Mathematics",
     image: "assets/floor2.png",
     zones: [
-      { name: "Level 2 & 4 Projects", color: "#ffc000", count: 2 },
-      { name: "Level 2 & 4 Projects (AI)", color: "#ff0000", count: 1 },
+      { name: "Level 2 & 4 Projects", color: "#ffc000", count: 3 },
     ],
   },
   {
@@ -31,8 +31,9 @@ const floors = [
     subtitle: "Auditorium & Labs Floor",
     image: "assets/floor4.png",
     zones: [
-      { name: "Level 1 Project", color: "#bdd7ee", count: 2 },
+      { name: "Level 1 Project", color: "#2e75b6", count: 2 },
       { name: "Company Stall", color: "#7030a0", count: 2 },
+      { name: "Student Project", color: "#00b050", count: 1 },
     ],
   },
 ];
